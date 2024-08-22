@@ -4,6 +4,7 @@ Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	b64 "encoding/base64"
 	"fmt"
 	"math/rand/v2"
 	"os"
@@ -101,5 +102,7 @@ func catValid(cat string) bool {
 }
 
 func beautify() string {
-	return "  _______                                  _____              _     \n |__   __|                       /\\       |  __ \\            (_)    \n    | | ___ _ __ _ __ _   _     /  \\      | |  | | __ ___   ___ ___ \n    | |/ _ \\ '__| '__| | | |   / /\\ \\     | |  | |/ _` \\ \\ / / / __|\n    | |  __/ |  | |  | |_| |  / ____ \\ _  | |__| | (_| |\\ V /| \\__ \\\n    |_|\\___|_|  |_|   \\__, | /_/    \\_(_) |_____/ \\__,_| \\_/ |_|___/\n                       __/ |                                        \n                      |___/                                         "
+	const enc = "ICBfX19fX19fICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF9fX19fICAgICAgICAgICAgICBfICAgICAKIHxfXyAgIF9ffCAgICAgICAgICAgICAgICAgICAgICAgL1wgICAgICAgfCAgX18gXCAgICAgICAgICAgIChfKSAgICAKICAgIHwgfCBfX18gXyBfXyBfIF9fIF8gICBfICAgICAvICBcICAgICAgfCB8ICB8IHwgX18gX19fICAgX19fIF9fXyAKICAgIHwgfC8gXyBcICdfX3wgJ19ffCB8IHwgfCAgIC8gL1wgXCAgICAgfCB8ICB8IHwvIF9gIFwgXCAvIC8gLyBfX3wKICAgIHwgfCAgX18vIHwgIHwgfCAgfCB8X3wgfCAgLyBfX19fIFwgXyAgfCB8X198IHwgKF98IHxcIFYgL3wgXF9fIFwKICAgIHxffFxfX198X3wgIHxffCAgIFxfXywgfCAvXy8gICAgXF8oXykgfF9fX19fLyBcX18sX3wgXF8vIHxffF9fXy8KICAgICAgICAgICAgICAgICAgICAgICBfXy8gfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgIHxfX18vICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA="
+	dec, _ := b64.StdEncoding.DecodeString(enc)
+	return string(dec)
 }
