@@ -8,11 +8,14 @@ import (
 	"fmt"
 	"math/rand/v2"
 	"os"
+	"strings"
 
 	guiApp "github.com/MartinJindra/terry/gui"
 	"github.com/MartinJindra/terry/quotes"
 	"github.com/spf13/cobra"
 )
+
+var categories = []string{"crazy", "cia", "confused", "racist", "deep", "technical"}
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -35,7 +38,8 @@ var rootCmd = &cobra.Command{
 		quoteList := quotes.GetQuotes()
 
 		if cat != "" && !catValid(cat) {
-			fmt.Println("Category:", cat, "doesn't exist")
+			fmt.Printf("Invalid Category: %s\n", cat)
+			fmt.Printf("Categories are %s\n", strings.Join(categories, ", "))
 			return
 		}
 
@@ -95,8 +99,10 @@ func init() {
 
 // Helper function:
 func catValid(cat string) bool {
-	if cat == "crazy" || cat == "cia" || cat == "confused" || cat == "racist" || cat == "deep" || cat == "technical" {
-		return true
+	for _, category := range categories {
+		if cat == category {
+			return true
+		}
 	}
 	return false
 }
